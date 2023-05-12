@@ -1,8 +1,10 @@
 // src/store/index.ts
 import { roleStore } from "./role";
+import { userStore } from "./user";
 
 export interface AppStore {
   roleSotre: ReturnType<typeof roleStore>;
+  userStore: ReturnType<typeof userStore>;
 }
 
 const appStore: AppStore = {} as AppStore;
@@ -12,6 +14,7 @@ const appStore: AppStore = {} as AppStore;
  */
 export const registerStore = () => {
   appStore.roleSotre = roleStore();
+  appStore.userStore = userStore();
 };
 
 export default appStore;
