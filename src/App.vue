@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <script setup lang="ts">
 import { RouterLink, RouterView } from 'vue-router'
 import HelloWorld from './components/HelloWorld.vue'
@@ -18,8 +19,16 @@ import HelloWorld from './components/HelloWorld.vue'
   </header>
 
   <RouterView />
+=======
+<template>
+  <div></div>
+>>>>>>> 3b573253783f8ebf3667e0c4d62b3ae80d60ed8a
 </template>
+<script setup lang="ts">
+import { onMounted } from "vue";
+import store from "./store/index";
 
+<<<<<<< HEAD
 <style scoped>
 header {
   line-height: 1.5;
@@ -82,4 +91,11 @@ nav a:first-of-type {
     margin-top: 1rem;
   }
 }
+=======
+onMounted(() => {
+  console.log(store.roleSotre);
+});
+</script>
+<style>
+>>>>>>> 3b573253783f8ebf3667e0c4d62b3ae80d60ed8a
 </style>
