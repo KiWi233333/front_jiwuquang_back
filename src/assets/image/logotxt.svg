@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="464.5" height="292.5" viewBox="0 0 464.5 292.5">
+  <g id="组_1" data-name="组 1" transform="translate(-8.5 -59.5)">
+    <g id="Text" transform="translate(-4 -6)">
+      <text id="极物" transform="translate(49 300)" fill="#5d33f6" stroke="#5d33f6" stroke-linecap="round" stroke-width="4" font-size="105" font-family="YuGothicUI-Regular, Yu Gothic UI" letter-spacing="0.4em"><tspan x="0" y="0">极</tspan><tspan y="0" font-family="MalgunGothic, Malgun Gothic">物</tspan></text>
+      <g id="圈">
+        <rect id="矩形_3" data-name="矩形 3" width="135" height="135" rx="67.5" transform="translate(325 188)" fill="#5d33f6"/>
+        <text id="圈-2" data-name="圈" transform="translate(338 288)" fill="#fff" stroke="#5d33f6" stroke-width="2" font-size="110" font-family="STHupo" letter-spacing="0.4em"><tspan x="0" y="0">圈</tspan></text>
+      </g>
+    </g>
+    <text id="开启你的专属圈子" transform="translate(121 346)" fill="#8765ff" font-size="24" font-family="YuGothicUI-Regular, Yu Gothic UI" letter-spacing="0.4em"><tspan x="0" y="0">开启你</tspan><tspan y="0" font-family="MalgunGothic, Malgun Gothic">的</tspan><tspan y="0" font-family="MicrosoftJhengHeiUIRegular, Microsoft JhengHei UI">专</tspan><tspan y="0">属</tspan><tspan y="0" font-family="MalgunGothic, Malgun Gothic">圈子</tspan></text>
+  </g>
+  <path id="交叉_1" data-name="交叉 1" transform="translate(35 128)" fill="#fff" stroke="#707070" stroke-width="1"/>
+</svg>
