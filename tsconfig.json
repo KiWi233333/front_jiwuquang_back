@@ -10,5 +10,13 @@
     {
       "path": "./tsconfig.vitest.json"
     }
-  ]
+  ],
+  // 配置types文件
+  "compilerOptions": {
+    "module": "commonjs",
+    "baseUrl": "./",
+    "paths": {
+      "*": ["types/*"]
+    }
+  }
 }
