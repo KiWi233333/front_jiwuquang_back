@@ -1,7 +1,6 @@
-export const name: string = "";
-
-export interface Result {
+// 返回值定义
+export interface Result<T> {
   code: number;
   message: string;
-  data: object;
+  data: T;
 }

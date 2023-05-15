@@ -1,17 +1,18 @@
-<template>Hello</template>
+<template>
+  <!-- 侧边导航 -->
+  <!-- 全局位置 -->
+  <router-view name="default"></router-view>
+</template>
 
 
-<script setup lang="ts" > 
-import { onLoginByPwd } from './api/sys/user';
+<script setup lang="ts" >
+// import { onLoginByPwd } from '@/api/sys/user';
 
 
-(async()=>{
-  const res  = await onLoginByPwd("kiwi2333", "123456");
-  if (res.data.code===20000) {
-    console.log(res.data.code);
-  }
-})()
-
+// const res = await onLoginByPwd("admin233", "123456");
+// if (res.data.code === 20000) {
+//   console.log(res.data.data);
+// }
 
 </script>
-<style scoped></style>;
+<style lang="scss" scoped></style>;
