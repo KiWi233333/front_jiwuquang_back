@@ -1,17 +1,14 @@
 import App from "./App.vue";
 import { createApp } from "vue";
-
 import { createPinia } from "pinia";
 import { registerStore } from "./stores";
-
+// router
 import router from "./router";
-
-import ElementPlus from "element-plus";
-import zhCn from "element-plus/dist/locale/zh-cn.mjs";
+// scss 全局导入
+import "./assets/styles/init.scss";
+import "./assets/styles/main.scss";
 
 const app = createApp(App);
-// element-plus lang
-app.use(ElementPlus, { locale: zhCn });
 
 // 注册pinia
 app.use(createPinia());
