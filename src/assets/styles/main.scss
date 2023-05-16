@@ -1,0 +1,42 @@
+.fade-enter-active {
+  animation: 0.4s fade;
+}
+.fade-leave-active {
+  animation: 0.4s fade reverse;
+}
+.popup-enter-active {
+  animation: 0.4s popup;
+}
+.popup-leave-active {
+  animation: 0.4s popup reverse;
+}
+
+/* 动画 */
+
+@keyframes fade {
+  0% {
+    position: absolute;
+    transition: 0.4s;
+    width: 100%;
+    opacity: 0;
+  }
+  100% {
+    position: absolute;
+    transition: 0.4s;
+    width: 100%;
+    opacity: 1;
+  }
+}
+
+@keyframes popup {
+  0% {
+    transition: 0.4s;
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  100% {
+    transition: 0.4s;
+    transform: scale(1);
+    opacity: 1;
+  }
+}

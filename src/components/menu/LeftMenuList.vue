@@ -1,13 +1,13 @@
 <template>
   <el-row class="menu-list">
     <el-col>
-
-      <el-menu default-active="1-1" :collapse="isColleapse">
-        <div class="logo">
+      <el-menu default-active="1" :collapse="isColleapse">
+        <!-- logo -->
+        <transition-group name="fade" tag="div" class="logo">
           <img :src="isColleapse ? Logo : LogoText" alt="极物圈">
-        </div>
+        </transition-group>
         <!-- 首页 -->
-        <el-menu-item index="2">
+        <el-menu-item index="1">
           <el-icon>
             <home-filled />
           </el-icon>
@@ -33,13 +33,10 @@
           </el-icon>
           <span>用户管理</span>
         </el-menu-item>
-
-        <el-menu-item @click="isColleapse = !isColleapse">
-          <el-icon class="colleapse">
-            <d-arrow-left v-show="!isColleapse" translate="yes"></d-arrow-left>
-            <d-arrow-right v-show="isColleapse" translate="yes"></d-arrow-right>
-          </el-icon>
-        </el-menu-item>
+        <el-icon class="colleapse" @click="isColleapse = !isColleapse">
+          <d-arrow-left v-show="!isColleapse" translate="yes"></d-arrow-left>
+          <d-arrow-right v-show="isColleapse" translate="yes"></d-arrow-right>
+        </el-icon>
       </el-menu>
     </el-col>
   </el-row>
@@ -67,14 +64,14 @@ let isColleapse = ref<boolean>(false);
 .menu-list {
   user-select: none;
   width: 200px;
+  height: 100vh;
+
+  .el-menu {
+    height: 100%;
+  }
 
   .logo {
     margin-bottom: 20px;
-
-    :hover {
-      background-color: none !important;
-      ;
-    }
 
     img {
       width: 100%;
@@ -84,10 +81,13 @@ let isColleapse = ref<boolean>(false);
   }
 
   .colleapse {
+    padding: 22px;
+    font-size: large;
     width: 100%;
     text-align: right;
     display: flex;
     justify-content: flex-end;
+    transition: 0.3s;
   }
 
 }

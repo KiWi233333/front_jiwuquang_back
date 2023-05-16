@@ -7,6 +7,8 @@ import router from "./router";
 // scss 全局导入
 import "./assets/styles/init.scss";
 import "./assets/styles/main.scss";
+// svg配置
+import "virtual:svg-icons-register";
 
 const app = createApp(App);
 

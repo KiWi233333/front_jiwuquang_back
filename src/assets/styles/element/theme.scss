@@ -1,4 +1,10 @@
 @forward "/node_modules/element-plus/theme-chalk/src/common/var.scss" with (
+  $border-radius: (
+    "base": 6px,
+    "small": 12px,
+    "round": 20px,
+    "circle": 100%,
+  ),
   $colors: (
     "white": #ffffff,
     "black": #111111,
