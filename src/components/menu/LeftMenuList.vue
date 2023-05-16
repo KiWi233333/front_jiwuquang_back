@@ -3,9 +3,9 @@
     <el-col>
 
       <el-menu default-active="1-1" :collapse="isColleapse">
-        <template #title @click="isColleapse = !isColleapse" class="logo">
-          <img :src="LogoText" alt="极物圈">
-        </template>
+        <div class="logo">
+          <img :src="isColleapse ? Logo : LogoText" alt="极物圈">
+        </div>
         <!-- 首页 -->
         <el-menu-item index="2">
           <el-icon>
@@ -47,6 +47,7 @@
 
 <script lang="ts" setup>
 import LogoText from "@/assets/image/logotxt.svg"
+import Logo from "@/assets/image/icon.svg"
 // icon
 import {
   HomeFilled,
