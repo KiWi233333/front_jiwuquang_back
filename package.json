@@ -1,6 +1,6 @@
 {
   "name": "front_jiwuquang_back",
-  "version": "0.0.1",
+  "version": "0.0.0",
   "private": true,
   "scripts": {
     "dev": "vite",

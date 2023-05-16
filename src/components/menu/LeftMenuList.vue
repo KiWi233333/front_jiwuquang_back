@@ -1,42 +1,44 @@
 <template>
-  <el-row class="tac">
-    <el-col :span="12">
-      <h5 class="mb-2">Default colors</h5>
-      <el-menu default-active="2" class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose">
-        <el-sub-menu index="1">
+  <el-row class="menu-list">
+    <el-col>
+
+      <el-menu default-active="1-1" :collapse="isColleapse">
+        <template #title @click="isColleapse = !isColleapse" class="logo">
+          <img :src="LogoText" alt="极物圈">
+        </template>
+        <!-- 首页 -->
+        <el-menu-item index="2">
+          <el-icon>
+            <home-filled />
+          </el-icon>
+          <span class="title">首&emsp;页</span>
+        </el-menu-item>
+        <el-sub-menu index="2">
           <template #title>
             <el-icon>
-              <location />
+              <goods-filled />
             </el-icon>
-            <span>Navigator One</span>
+            <span>商品管理</span>
           </template>
-          <el-menu-item-group title="Group One">
-            <el-menu-item index="1-1">item one</el-menu-item>
-            <el-menu-item index="1-2">item two</el-menu-item>
-          </el-menu-item-group>
-          <el-menu-item-group title="Group Two">
-            <el-menu-item index="1-3">item three</el-menu-item>
-          </el-menu-item-group>
-          <el-sub-menu index="1-4">
-            <template #title>item four</template>
-            <el-menu-item index="1-4-1">item one</el-menu-item>
-          </el-sub-menu>
+          <el-menu-item index="2-1">
+            <el-icon>
+              <Collection />
+            </el-icon>
+            <span>商品分类</span>
+          </el-menu-item>
         </el-sub-menu>
-        <el-menu-item index="2">
-          <el-icon><icon-menu /></el-icon>
-          <span>Navigator Two</span>
-        </el-menu-item>
-        <el-menu-item index="3" disabled>
+        <el-menu-item index="3">
           <el-icon>
-            <document />
+            <UserFilled />
           </el-icon>
-          <span>Navigator Three</span>
+          <span>用户管理</span>
         </el-menu-item>
-        <el-menu-item index="4">
-          <el-icon>
-            <setting />
+
+        <el-menu-item @click="isColleapse = !isColleapse">
+          <el-icon class="colleapse">
+            <d-arrow-left v-show="!isColleapse" translate="yes"></d-arrow-left>
+            <d-arrow-right v-show="isColleapse" translate="yes"></d-arrow-right>
           </el-icon>
-          <span>Navigator Four</span>
         </el-menu-item>
       </el-menu>
     </el-col>
@@ -44,17 +46,48 @@
 </template>
 
 <script lang="ts" setup>
+import LogoText from "@/assets/image/logotxt.svg"
 // icon
 import {
-  Document,
-  Menu as IconMenu,
-  Location,
-  Setting,
-} from '@element-plus/icons-vue'
-const handleOpen = (key: string, keyPath: string[]) => {
-  console.log(key, keyPath)
-}
-const handleClose = (key: string, keyPath: string[]) => {
-  console.log(key, keyPath)
-}
+  HomeFilled,
+  GoodsFilled,
+  Collection,
+  DArrowRight,
+  DArrowLeft,
+  UserFilled
+} from '@element-plus/icons-vue';
+import { ref } from 'vue';
+let isColleapse = ref<boolean>(false);
+
+
 </script>
+
+<style lang="scss" scoped>
+.menu-list {
+  user-select: none;
+  width: 200px;
+
+  .logo {
+    margin-bottom: 20px;
+
+    :hover {
+      background-color: none !important;
+      ;
+    }
+
+    img {
+      width: 100%;
+      object-fit: contain;
+      padding: 10%;
+    }
+  }
+
+  .colleapse {
+    width: 100%;
+    text-align: right;
+    display: flex;
+    justify-content: flex-end;
+  }
+
+}
+</style>
