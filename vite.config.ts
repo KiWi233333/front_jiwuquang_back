@@ -28,6 +28,7 @@ export default defineConfig({
   plugins: [
     vue(),
     vueJsx(),
+    // 自动注入
     AutoImport({
       resolvers: [ElementPlusResolver()],
     }),
