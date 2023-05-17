@@ -44,7 +44,7 @@
 
 <script lang="ts" setup>
 import LogoText from "@/assets/image/logotxt.svg"
-import Logo from "@/assets/image/icon.svg"
+import Logo from "@/assets/image/logo.svg"
 // icon
 import {
   HomeFilled,
