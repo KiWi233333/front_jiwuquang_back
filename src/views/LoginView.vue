@@ -1,84 +1,46 @@
 <template>
-  <el-form ref="ruleFormRef" :model="ruleForm" status-icon :rules="rules" label-width="120px" class="demo-ruleForm">
-    <el-form-item label="Password" prop="pass">
-      <el-input v-model="ruleForm.pass" type="password" autocomplete="off" />
+  <el-form :model="user" status-icon :rules="rules" label-width="120px" class="demo-ruleForm">
+    <el-form-item label="用户名：">
+      <el-input v-model="user.username" />
     </el-form-item>
-    <el-form-item label="Confirm" prop="checkPass">
-      <el-input v-model="ruleForm.checkPass" type="password" autocomplete="off" />
-    </el-form-item>
-    <el-form-item label="Age" prop="age">
-      <el-input v-model.number="ruleForm.age" />
+    <el-form-item label="密$emps;码：">
+      <el-input v-model="user.password" />
     </el-form-item>
     <el-form-item>
-      <el-button type="primary" @click="submitForm(ruleFormRef)">Submit</el-button>
-      <el-button @click="resetForm(ruleFormRef)">Reset</el-button>
+      <el-button type="primary" @click="toLogin">登录</el-button>
     </el-form-item>
   </el-form>
 </template>
 
 <script lang="ts" setup>
-import type { FormInstance, FormRules } from 'element-plus/lib/components/index.js';
+import { onLoginByPwd } from '@/api/sys/user';
 import { reactive, ref } from 'vue'
-
-const ruleFormRef = ref<FormInstance>()
-
-const checkAge = (rule: any, value: any, callback: any) => {
-  if (!value) {
-    return callback(new Error('Please input the age'))
-  }
-  setTimeout(() => {
-    if (!Number.isInteger(value)) {
-      callback(new Error('Please input digits'))
-    } else {
-      if (value < 18) {
-        callback(new Error('Age must be greater than 18'))
-      } else {
-        callback()
-      }
-    }
-  }, 1000)
-}
-
-const validatePass = (rule: any, value: any, callback: any) => {
-  if (value === '') {
-    callback(new Error('Please input the password'))
-  } else {
-    if (ruleForm.checkPass !== '') {
-      if (!ruleFormRef.value) return
-      ruleFormRef.value.validateField('checkPass', () => null)
-    }
-    callback()
-  }
-}
-const validatePass2 = (rule: any, value: any, callback: any) => {
-  if (value === '') {
-    callback(new Error('Please input the password again'))
-  } else if (value !== ruleForm.pass) {
-    callback(new Error("Two inputs don't match!"))
-  } else {
-    callback()
-  }
-}
-
-const ruleForm = reactive({
-  pass: '',
-  checkPass: '',
-  age: '',
+/** @data **/  
+// 表单user
+let user = reactive({
+  username: "",
+  password: "",
 })
-
-const rules = reactive<FormRules>({
-  pass: [{ validator: validatePass, trigger: 'blur' }],
-  checkPass: [{ validator: validatePass2, trigger: 'blur' }],
-  age: [{ validator: checkAge, trigger: 'blur' }],
-})
-
-const submitForm = (formEl: FormInstance | undefined) => {
-
+let saveLogin = ref<boolean>(false);
+// 规则
+let rules = {
+  username: [
+    { required: true, message: '请输入用户名！', trigger: 'blur' },
+  ],
+  password: [
+    { required: true, message: '请输入密码！', trigger: 'blur' },
+  ],
 }
 
-const resetForm = (formEl: FormInstance | undefined) => {
-  if (!formEl) return
-  formEl.resetFields()
+// 登录请求
+const toLogin = async () => {
+  const { data } = await onLoginByPwd(user.username, user.password)
+  console.log(data.data);
+  // 自动登录
+  if (saveLogin) {
+
+  }
+
 }
 </script>
 <style lang="scss" scoped></style>

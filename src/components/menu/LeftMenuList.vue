@@ -1,11 +1,11 @@
 <template>
   <el-row class="menu-list">
-    <el-col>
-      <el-menu default-active="1" :collapse="isColleapse">
+    <el-col class="col">
+      <el-menu default-active="1">
         <!-- logo -->
-        <transition-group name="fade" tag="div" class="logo">
-          <img :src="isColleapse ? Logo : LogoText" alt="极物圈">
-        </transition-group>
+        <div tag="div" class="logo">
+          <img :src="isColleapse ? Logo : LogoText" alt="极物圈" :key="1">
+        </div>
         <!-- 首页 -->
         <el-menu-item index="1">
           <el-icon>
@@ -33,12 +33,17 @@
           </el-icon>
           <span>用户管理</span>
         </el-menu-item>
-        <el-icon class="colleapse" @click="isColleapse = !isColleapse">
-          <d-arrow-left v-show="!isColleapse" translate="yes"></d-arrow-left>
-          <d-arrow-right v-show="isColleapse" translate="yes"></d-arrow-right>
-        </el-icon>
+
+        <div class="colleapse" @click="isColleapse = !isColleapse">
+          <el-icon class="icon">
+            <ArrowLeftBold v-show="!isColleapse" translate="yes"></ArrowLeftBold>
+            <ArrowRightBold v-show="isColleapse" translate="yes"></ArrowRightBold>
+          </el-icon>
+        </div>
       </el-menu>
+
     </el-col>
+
   </el-row>
 </template>
 
@@ -50,44 +55,105 @@ import {
   HomeFilled,
   GoodsFilled,
   Collection,
-  DArrowRight,
   DArrowLeft,
-  UserFilled
+  UserFilled,
+  ArrowLeftBold,
+  ArrowRightBold
 } from '@element-plus/icons-vue';
-import { ref } from 'vue';
+import { ref, watch, onMounted } from 'vue';
+import { gsap } from "gsap";
 let isColleapse = ref<boolean>(false);
 
+onMounted(() => {
 
+})
+
+watch(isColleapse, (val) => {
+  gsap.to(".menu-list .logo", {
+    duration: 0.3,
+    opacity: 0,
+    scale: 0.6,
+    rotation: 240,
+  })
+}, {})
 </script>
 
 <style lang="scss" scoped>
 .menu-list {
   user-select: none;
-  width: 200px;
+  max-width: 200px;
   height: 100vh;
 
-  .el-menu {
-    height: 100%;
+  .col {
+    position: relative;
+    width: auto;
   }
 
-  .logo {
-    margin-bottom: 20px;
+  // 菜单和项
+  .el-menu {
+    height: 100%;
+    overflow: visible !important;
 
-    img {
-      width: 100%;
-      object-fit: contain;
-      padding: 10%;
+    .el-menu-item {
+      width: calc(100% + 3px);
+      overflow: hidden !important;
+      border-right: 3px solid transparent;
+
+      .title {
+        transition: 0.3s;
+      }
+    }
+
+
+    .el-menu-item.is-active {
+      transition: 0.3s;
+      border-radius: 0 2px 2px 0px;
+      background-color: var(--el-color-primary-light-9);
+      border-right: 3px solid var(--el-color-primary);
     }
   }
 
-  .colleapse {
-    padding: 22px;
-    font-size: large;
-    width: 100%;
-    text-align: right;
+  // logo
+  .logo {
+    height: 80px;
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
+    align-items: center;
+
+    img {
+      transition: 0.3s;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      padding: 8px;
+    }
+  }
+
+  // 折叠按钮
+  .colleapse {
+    position: absolute;
+    bottom: 0;
+    cursor: pointer;
+    margin: auto;
+    width: 100%;
     transition: 0.3s;
+    margin: 10px 0;
+    display: flex;
+    transition: 0.3s;
+
+    justify-content: flex-end;
+
+    .icon {
+      width: 40px;
+      height: 40px;
+      transform: translateX(50%);
+      color: #fff;
+      background-color: var(--el-color-primary);
+      border-radius: 50%;
+      transition: 0.3s;
+    }
+
+
   }
 
 }
