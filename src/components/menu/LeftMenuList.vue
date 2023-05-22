@@ -1,7 +1,7 @@
 <template>
   <el-row class="menu-list">
     <el-col class="col">
-      <el-menu default-active="1">
+      <el-menu default-active="1" :collapse="isColleapse">
         <!-- logo -->
         <div tag="div" class="logo">
           <img :src="isColleapse ? Logo : LogoText" alt="极物圈" :key="1">
@@ -32,18 +32,15 @@
             <UserFilled />
           </el-icon>
           <span>用户管理</span>
-        </el-menu-item>
-
-        <div class="colleapse" @click="isColleapse = !isColleapse">
+        </el-menu-item> 
+        <div class="collapse" @click="isColleapse = !isColleapse">
           <el-icon class="icon">
             <ArrowLeftBold v-show="!isColleapse" translate="yes"></ArrowLeftBold>
             <ArrowRightBold v-show="isColleapse" translate="yes"></ArrowRightBold>
           </el-icon>
         </div>
       </el-menu>
-
     </el-col>
-
   </el-row>
 </template>
 
@@ -55,7 +52,6 @@ import {
   HomeFilled,
   GoodsFilled,
   Collection,
-  DArrowLeft,
   UserFilled,
   ArrowLeftBold,
   ArrowRightBold
@@ -68,7 +64,7 @@ onMounted(() => {
 
 })
 
-watch(isColleapse, (val) => {
+watch(isColleapse, (val):void => {
   gsap.to(".menu-list .logo", {
     duration: 0.3,
     opacity: 0,
@@ -130,7 +126,7 @@ watch(isColleapse, (val) => {
   }
 
   // 折叠按钮
-  .colleapse {
+  .collapse {
     position: absolute;
     bottom: 0;
     cursor: pointer;
