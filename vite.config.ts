@@ -7,13 +7,15 @@ import AutoImport from "unplugin-auto-import/vite";
 import Components from "unplugin-vue-components/vite";
 import { ElementPlusResolver } from "unplugin-vue-components/resolvers";
 import { createSvgIconsPlugin } from "vite-plugin-svg-icons";
+import UnoCSS from 'unocss/vite'
+
 
 // https://vitejs.dev/config/
 export default defineConfig({
   resolve: {
     // 全局路径
     alias: {
-      "@": `${path.resolve(__dirname, "src")}/`,
+      "@": `${path.resolve(__dirname, "src")}`,
     },
   },
   css: {
@@ -27,6 +29,7 @@ export default defineConfig({
     },
   },
   plugins: [
+    UnoCSS(),
     vue(),
     vueJsx(),
     // 自动注入

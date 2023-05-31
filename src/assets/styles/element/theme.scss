@@ -5,6 +5,8 @@
     "round": 20px,
     "circle": 100%,
   ),
+
+
   $colors: (
     "white": #ffffff,
     "black": #111111,
@@ -35,5 +37,12 @@
     "secondary": #909399,
     "placeholder": #a8abb2,
     "disabled": #c0c4cc,
+  ),
+
+
+
+  // $drawer
+  $drawer:(
+    "padding-primary":0px,
   )
 );
